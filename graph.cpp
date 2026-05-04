@@ -5,26 +5,26 @@ using namespace std;
 template <typename T>
 struct Graph {
     int V;
-    list<int>* l;    // list<int> not list<T>, stores vertex indexes
+    list<int>* l;    
     T* value;
 
-    Graph(int V) {           // int V, not T V
+    Graph(int V) {           
         this->V = V;
-        l = new list<int>[V];  // V not v, C++ is case sensitive
+        l = new list<int>[V];  
         value = new T[V];
     }
 
     ~Graph() {
         delete[] l;
-        delete[] value;      // was missing
+        delete[] value;      
     }
 
-    void setVertex(int u, T data) {  // int u, not T u
-        value[u] = data;             // value[u] not l[u]
+    void setVertex(int u, T data) {  
+        value[u] = data;             
     }
 
     void addEdge(int source, int destination) {
-        l[source].push_back(destination);    // no assignment, no l.push_back
+        l[source].push_back(destination);    
         l[destination].push_back(source);
     }
 
@@ -40,7 +40,7 @@ struct Graph {
 };
 
 int main() {
-    Graph<char> g(5);       // 5 vertices since you set 0,1,2,3,4
+    Graph<char> g(5);       
 
     g.setVertex(0, 'H');    // data comes second, index comes first
     g.setVertex(1, 'H');
